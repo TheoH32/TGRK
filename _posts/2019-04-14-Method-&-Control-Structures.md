@@ -6,7 +6,7 @@ description: "This is meta description"
 featured: true
 image: "assets/images/featured-post/post-4.jpg"
 categories: 
-  - "Ratchet"
+  - "Rachit"
 ---
 
 

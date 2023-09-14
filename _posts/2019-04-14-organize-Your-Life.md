@@ -3,7 +3,7 @@ layout: post
 title: "Organize Your Life With 10 Simple rule"
 date: 2019-04-14 15:46:10 +03:00
 description: "This is meta description"
-featured: true
+# featured: true
 image: "assets/images/featured-post/post-1.jpg"
 categories: 
   - "Lifestyle"
