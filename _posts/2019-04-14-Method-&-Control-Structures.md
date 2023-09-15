@@ -4,7 +4,7 @@ title: "Method and Control Structures"
 date: 2019-04-14 12:46:10 +03:00
 description: "This is meta description"
 featured: true
-image: "assets/images/featured-post/post-4.jpg"
+image: "assets/images/featured-post/methods.jpg"
 categories: 
   - "Rachit"
 ---
