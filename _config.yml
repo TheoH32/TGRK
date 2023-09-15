@@ -1,7 +1,7 @@
 ---
 #-------------------------------
 # General Site Settings
-baseurl: "" # The subpath of your site, e.g. /blog
+baseurl: "/TGRK" # The subpath of your site, e.g. /blog
 url: "" # The base hostname & protocol for your site, e.g. http://example.com
 
 title: Big Tracta FRQs
@@ -13,11 +13,11 @@ preloader: true # To disable preloader change value to false
 
 menu:
   - name: Home
-    url: /
+    url: /TGRK/
   - name: About
-    url: /about/
+    url: /TGRK/about/
   - name: Contact
-    url: /contact/
+    url: /TGRK/contact/
 
 # *** NOTE ***
 # You can add submenus. For example:
