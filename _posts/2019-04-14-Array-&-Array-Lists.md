@@ -7,6 +7,7 @@ featured: true
 image: "assets/images/featured-post/arrayandarraylist.jpg"
 categories: 
   - "Kaiden"
+  - "FRQs"
 ---
 
 

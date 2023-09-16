@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Collegeboard FRQ 2023 Question 1
+title: Methods and Control Structures
 date: 2019-04-14 14:46:12 +03:00
 description: "This is the fist collegeboard FRQ in our presentation"
 featured: true
