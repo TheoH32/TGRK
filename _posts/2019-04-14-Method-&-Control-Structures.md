@@ -1,50 +1,246 @@
 ---
 layout: post
-title: "Method and Control Structures"
-date: 2019-04-14 12:46:10 +03:00
-description: "This is meta description"
+title: Collegeboard FRQ 2023 Question 1
+date: 2019-04-14 14:46:12 +03:00
+description: "This is the fist collegeboard FRQ in our presentation"
 featured: true
 image: "assets/images/featured-post/methods.jpg"
 categories: 
   - "Rachit"
+  - "FRQs"
 ---
 
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
-labore et dolore magnam aliquam quaerat voluptatem.
+## FRQ #1 - Methods and Control Structures
+This question involves the AppointmentBook class, which provides methods for students to schedule appointments with their teacher. Appointments can be scheduled during one of eight class periods during the school day, numbered 1 through 8. A requested appointment has a duration, which is the number of mins the appointment will last. The 60 minutes within a period are numbered 0 through 59. In order for an appointment to be scheduled, the teacher must have a block of consecutive, available minutes that contains at least the requested number of minutes in a requested period. Scheduled appointments must start and end within the same period.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
-labore et dolore magnam aliquam quaerat voluptatem.
+![Question](https://media.discordapp.net/attachments/1010780182476496908/1151949183197139034/image.png?width=842&height=998)
 
-> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+## Part A
 
-![]({{site.baseurl}}/assets/images/post-img.jpg)
+![Part a](https://media.discordapp.net/attachments/1010780182476496908/1151949486470484119/image.png?width=912&height=998)
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
-labore et dolore magnam aliquam quaerat voluptatem.
+
+```java
+public int findFreeBlock(int period, int duration)
+{
+    int free = 0;
+    
+    for(int min = 0; min <= 59; min++)
+    {
+        if(isMinuteFree(period, minute))
+            free++;
+        else
+            free = 0;
+        
+        if(free == duration)
+            return min - free + 1;
+    }
+    
+    return -1;
+}
+```
+
+## Part B
+
+![Part B_1](https://media.discordapp.net/attachments/1010780182476496908/1151956661628575804/image.png?width=826&height=998)
+
+![Part B_2](https://media.discordapp.net/attachments/1010780182476496908/1151956694650322955/image.png?width=1256&height=998)
+
+
+```java
+public boolean makeAppointment(int start, int end, int duration)
+{
+    for(int period = start; period <= end; period++)
+    {
+        int startMinute = findFreeBlock(period, duration);
+        if(startMinute != -1)
+        {
+            reserveBlock(period, startMinute, duration);
+            return true;
+        }
+    }
+    return false;
+}
+```
+
+## Part 3
+Array Experimentation
+
+
+```java
+String Foods;
+String[] Foods = {"Burrito", "Pasta", "Tacos", "Rice"};
+System.out.println(Foods[0])
+```
+
+    Burrito
+
+
+
+```java
+System.out.println(Foods.length);
+```
+
+    4
+
+
+Now we will go with 2D Arrays, this is some experimentation
+
+
+```java
+int[][] arr = { { 1, 2 }, { 3, 4 } };
+System.out.println("Pos 0: " + arr[0][0] + ", " + arr[0][1]);
+System.out.println("Pos 1: " + arr[1][0] + ", " + arr[1][1]);
+```
+
+    Pos 0: 1, 2
+    Pos 1: 3, 4
+
+
+## Part 4 -- Array Implimentation
+### Part A
+There is only one variable here so it would not really make sense to put an array for a static variable that we are only changing to determine the time; ie we need no history of the variable as well.
+
+
+```java
+public int findFreeBlock(int period, int duration)
+{
+    int free = 0;
+    
+    for(int min = 0; min <= 59; min++)
+    {
+        if(isMinuteFree(period, minute))
+            free++;
+        else
+            free = 0;
+        
+        if(free == duration)
+            return min - free + 1;
+    }
+    
+    return -1;
+}
+```
+
+### Part B
+Since we only use one variable here, pulling only one definate value from a function, it would be impractical to use an array here. 
+
+
+```java
+public boolean makeAppointment(int start, int end, int duration)
+{
+    for(int period = start; period <= end; period++)
+    {
+        int startMinute = findFreeBlock(period, duration);
+        if(startMinute != -1)
+        {
+            reserveBlock(period, startMinute, duration);
+            return true;
+        }
+    }
+    return false;
+}
+```
+
+### Part A -- Implimented
+
+
+```java
+public int findFreeBlock(int period, int duration)
+{
+    int[] free = {0};
+    
+    for(int min = 0; min <= 59; min++)
+    {
+        if(isMinuteFree(period, minute))
+            free[0]++;
+        else
+            free[0] = 0;
+        
+        if(free[0] == duration)
+            return min - free + 1;
+    }
+    
+    return -1;
+}
+```
+
+## Part 5: Project with Arrays with Methods and Control Structures
+
+
+```java
+public int transform(int original)
+{
+    int[] transformers = {1, -1, 2, -3, 5, -8, 13, -21};
+
+    for(int i = 0; i <= 7; i++)
+    {
+        // original = original + transformers[i];
+        if(original < 0)
+            original = (transformers[i] * original) - transformers[i];
+        else
+            original = (transformers[i] * original) + transformers[i];
+    }
+    return original;
+}
+```
+
+
+```java
+transform(100)
+```
+
+
+
+
+    6794718
+
+
+
+
+```java
+transform(-1)
+```
+
+
+
+
+    -308238
+
+
+
+
+```java
+transform(0.5)
+```
+
+
+    |   transform(0.5)
+
+    incompatible types: possible lossy conversion from double to int
+
+    
+
+
+
+```java
+transform(-300)
+```
+
+
+
+
+    -19898718
+
+
+
+
+```java
+transform(0)
+```
+
+
+
+
+    242718
