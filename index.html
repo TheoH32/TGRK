@@ -5,7 +5,23 @@ layout: default
 {% if site.layout_home_page == true %}
 {% if site.featured-post-slider == true %}
 <!-- featured post -->
+<style>
+  .containerP {
+    background-color: black;
+  }
+  .parallax {
+    background-image: url("https://github.com/TheoH32/TGRK/assets/69410126/274d408c-abff-4fc4-ae00-a2610cd178e5");
+    min-height: 600px; 
+    background-attachment: fixed;        
+    background-position: center 55%;
+    background-repeat: no-repeat;
+    background-size: 75% 75%;
+  }
+</style>
 <section>
+  <div class="containerP">
+    <div class="parallax"></div>
+  </div>
   <div class="container-fluid p-sm-0">
     <div class="row featured-post-slider">
       {% for post in site.posts %}
