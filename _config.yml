@@ -14,10 +14,10 @@ preloader: true # To disable preloader change value to false
 menu:
   - name: Home
     url: /TGRK/
-  - name: About
-    url: /TGRK/about/
-  - name: Contact
-    url: /TGRK/contact/
+  - name: FRQs
+    url: /TGRK/category/frqs/
+#  - name: Contact
+#    url: /TGRK/contact/
 
 # *** NOTE ***
 # You can add submenus. For example:
