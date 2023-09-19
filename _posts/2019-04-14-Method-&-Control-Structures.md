@@ -10,7 +10,6 @@ categories:
   - "FRQs"
 ---
 
-
 ## FRQ #1 - Methods and Control Structures
 This question involves the AppointmentBook class, which provides methods for students to schedule appointments with their teacher. Appointments can be scheduled during one of eight class periods during the school day, numbered 1 through 8. A requested appointment has a duration, which is the number of mins the appointment will last. The 60 minutes within a period are numbered 0 through 59. In order for an appointment to be scheduled, the teacher must have a block of consecutive, available minutes that contains at least the requested number of minutes in a requested period. Scheduled appointments must start and end within the same period.
 
@@ -21,7 +20,7 @@ This question involves the AppointmentBook class, which provides methods for stu
 ![Part a](https://media.discordapp.net/attachments/1010780182476496908/1151949486470484119/image.png?width=912&height=998)
 
 
-```java
+```Java
 public int findFreeBlock(int period, int duration)
 {
     int free = 0;
@@ -48,7 +47,7 @@ public int findFreeBlock(int period, int duration)
 ![Part B_2](https://media.discordapp.net/attachments/1010780182476496908/1151956694650322955/image.png?width=1256&height=998)
 
 
-```java
+```Java
 public boolean makeAppointment(int start, int end, int duration)
 {
     for(int period = start; period <= end; period++)
@@ -68,7 +67,7 @@ public boolean makeAppointment(int start, int end, int duration)
 Array Experimentation
 
 
-```java
+```Java
 String Foods;
 String[] Foods = {"Burrito", "Pasta", "Tacos", "Rice"};
 System.out.println(Foods[0])
@@ -78,7 +77,7 @@ System.out.println(Foods[0])
 
 
 
-```java
+```Java
 System.out.println(Foods.length);
 ```
 
@@ -88,7 +87,7 @@ System.out.println(Foods.length);
 Now we will go with 2D Arrays, this is some experimentation
 
 
-```java
+```Java
 int[][] arr = { { 1, 2 }, { 3, 4 } };
 System.out.println("Pos 0: " + arr[0][0] + ", " + arr[0][1]);
 System.out.println("Pos 1: " + arr[1][0] + ", " + arr[1][1]);
@@ -103,7 +102,7 @@ System.out.println("Pos 1: " + arr[1][0] + ", " + arr[1][1]);
 There is only one variable here so it would not really make sense to put an array for a static variable that we are only changing to determine the time; ie we need no history of the variable as well.
 
 
-```java
+```Java
 public int findFreeBlock(int period, int duration)
 {
     int free = 0;
@@ -127,7 +126,7 @@ public int findFreeBlock(int period, int duration)
 Since we only use one variable here, pulling only one definate value from a function, it would be impractical to use an array here. 
 
 
-```java
+```Java
 public boolean makeAppointment(int start, int end, int duration)
 {
     for(int period = start; period <= end; period++)
@@ -146,7 +145,7 @@ public boolean makeAppointment(int start, int end, int duration)
 ### Part A -- Implimented
 
 
-```java
+```Java
 public int findFreeBlock(int period, int duration)
 {
     int[] free = {0};
@@ -169,7 +168,7 @@ public int findFreeBlock(int period, int duration)
 ## Part 5: Project with Arrays with Methods and Control Structures
 
 
-```java
+```Java
 public int transform(int original)
 {
     int[] transformers = {1, -1, 2, -3, 5, -8, 13, -21};
@@ -187,7 +186,7 @@ public int transform(int original)
 ```
 
 
-```java
+```Java
 transform(100)
 ```
 
@@ -199,7 +198,7 @@ transform(100)
 
 
 
-```java
+```Java
 transform(-1)
 ```
 
@@ -211,7 +210,7 @@ transform(-1)
 
 
 
-```java
+```Java
 transform(0.5)
 ```
 
@@ -224,7 +223,7 @@ transform(0.5)
 
 
 
-```java
+```Java
 transform(-300)
 ```
 
@@ -236,7 +235,7 @@ transform(-300)
 
 
 
-```java
+```Java
 transform(0)
 ```
 
@@ -244,3 +243,129 @@ transform(0)
 
 
     242718
+
+
+
+## Complete Code Execution
+
+
+```Java
+public class AppointmentBook
+{
+    // package access for testing
+    // [period - 1][minute]
+    boolean[][] freeMinutes;
+    
+    public AppointmentBook()
+    {
+        freeMinutes = new boolean[8][60];
+        
+        for(int r = 0; r < freeMinutes.length; r++)
+            for(int c = 0; c < freeMinutes[0].length; c++)
+                freeMinutes[r][c] = true;
+    }
+    
+    private boolean isMinuteFree(int period, int minute)
+    {
+        return freeMinutes[period - 1][minute];
+    }
+    
+    // package access for testing
+    void reserveBlock(int period, int startMinute, int duration)
+    {
+        for(int minute = startMinute; minute < startMinute + duration; minute++)
+            freeMinutes[period - 1][minute] = false;
+    }
+    
+    public int findFreeBlock(int period, int duration)
+    {
+        int freeInARow = 0;
+        
+        for(int minute = 0; minute <= 59; minute++)
+        {
+            if(isMinuteFree(period, minute))
+                freeInARow++;
+            else
+                freeInARow = 0;
+            
+            if(freeInARow == duration)
+                return minute - freeInARow + 1;
+        }
+        
+        return -1;
+    }
+    
+    public boolean makeAppointment(int startPeriod, int endPeriod,
+                                   int duration)
+    {
+        for(int period = startPeriod; period <= endPeriod; period++)
+        {
+            int startMinute = findFreeBlock(period, duration);
+            
+            if(startMinute != -1)
+            {
+                reserveBlock(period, startMinute, duration);
+                return true;
+            }
+        }
+        
+        return false;
+    }
+}
+```
+
+
+```Java
+import java.util.Arrays;
+//import org.junit.Test;
+//import org.junit.Assert;
+
+public class OneTest
+{
+    public void testFindFreeBlockAgainstExamples()
+    {
+        AppointmentBook book = new AppointmentBook();
+        
+        book.reserveBlock(2, 0, 10);
+        book.reserveBlock(2, 15, 15);
+        book.reserveBlock(2, 45, 5);
+        
+        Assert.assertTrue(book.findFreeBlock(2, 15) == 30);
+        Assert.assertTrue(book.findFreeBlock(2, 9) == 30);
+        Assert.assertTrue(book.findFreeBlock(2, 20) == -1);
+    }
+    
+    public void testMakeAppointmentAgainstExamples()
+    {
+        AppointmentBook book = new AppointmentBook();
+        
+        book.reserveBlock(2, 0, 25);
+        book.reserveBlock(2, 30, 30);
+        book.reserveBlock(3, 15, 26);
+        book.reserveBlock(4, 0, 5);
+        book.reserveBlock(4, 30, 14);
+        
+        AppointmentBook expectedBook = new AppointmentBook();
+        
+        expectedBook.reserveBlock(2, 0, 25);
+        expectedBook.reserveBlock(2, 30, 30);
+        expectedBook.reserveBlock(3, 15, 26);
+        expectedBook.reserveBlock(4, 0, 5);
+        expectedBook.reserveBlock(4, 30, 14);
+        
+        expectedBook.reserveBlock(4, 5, 22);
+        
+        Assert.assertTrue(book.makeAppointment(2, 4, 22));
+        Assert.assertTrue(Arrays.deepEquals(expectedBook.freeMinutes, book.freeMinutes));
+        
+        expectedBook.reserveBlock(3, 0, 3);
+        
+        Assert.assertTrue(book.makeAppointment(3, 4, 3));
+        Assert.assertTrue(Arrays.deepEquals(expectedBook.freeMinutes, book.freeMinutes));
+        
+        Assert.assertTrue(!book.makeAppointment(2, 4, 30));
+        Assert.assertTrue(Arrays.deepEquals(expectedBook.freeMinutes, book.freeMinutes));
+    }
+}
+
+```
