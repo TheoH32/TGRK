@@ -7,7 +7,6 @@ featured: true
 image: "assets/images/featured-post/methods.jpg"
 categories: 
   - "Rachit"
-  - "FRQs"
 ---
 
 ## FRQ #1 - Methods and Control Structures

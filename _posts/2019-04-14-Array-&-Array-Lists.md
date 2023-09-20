@@ -7,7 +7,6 @@ featured: true
 image: "assets/images/featured-post/arrayandarraylist.jpg"
 categories: 
   - "Kaiden"
-  - "FRQs"
 ---
 <div class="images">
   <img src="https://github.com/kaiden-dough/kaidencsablog/assets/69410126/7de4ba0b-2fac-4945-8a15-cc3570b0c519" alt="Image 1">
