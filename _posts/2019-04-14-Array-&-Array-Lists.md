@@ -14,6 +14,9 @@ categories:
   <img src="https://github.com/kaiden-dough/kaidencsablog/assets/69410126/4a9f058f-3242-48e0-9da5-ba2026ccdac9" alt="Image 2">
 </div>
 
+## What is happening?
+This code is for a high school clube that desires to store their club members with their name, the graduation year, and if they are in good standing.
+
 ```Java
 import java.util.ArrayList;
 public class MemberInfo{ // filling in the code that College Board did not provide
@@ -37,6 +40,9 @@ public class MemberInfo{ // filling in the code that College Board did not provi
 <div class="images">
   <img src="https://github.com/kaiden-dough/kaidencsablog/assets/69410126/06179dcd-e6fb-4d66-b88e-ca64ce4ee712" alt="Image 3">
 </div>
+
+## Part A
+This question wants me to create a method that allows the club to add members to the the MemberInfo ArrayList. They want to be able to add a bunch of names under the same graduation year.
 
 ```Java
 public class ClubMembers{
@@ -66,6 +72,7 @@ public class ClubMembers{
 }
 ```
 
+### Part A Explanation
 In this code block, I had it iterate through each name and add the name and graduation year that is provided and add the default good standing to each person and add it to the memberlist.
 
 
@@ -73,6 +80,10 @@ In this code block, I had it iterate through each name and add the name and grad
   <img src="https://github.com/kaiden-dough/kaidencsablog/assets/69410126/2c9ca642-b1ed-412f-89ce-0318222c3e13" alt="Image 4">
 </div>
 
+## Part B
+This question wants me to be able to remove members by their graduation year. It wants to record the removed members only if they have good standing.
+
+### Part B Explanation
 This one, I had to record the members that had good standing but were getting removed. Also I would remove the members with grad year that is the provided year or lower. Only the good standing are recorded, otherwise it is only deleted.
 
 
