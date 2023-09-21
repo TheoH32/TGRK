@@ -387,6 +387,6 @@ test.testMakeAppointmentAgainstExamples();
 
 
 ### Diagram Map and Scoring
-![Diagram](frq1.png)
-![Scoring](image.png)
-Final Score: 5/5 (All Correct) - Vivian
+![Diagram](https://media.discordapp.net/attachments/1010780182476496908/1154474547261747220/frq1.png?width=1330&height=998)
+![Scoring](https://media.discordapp.net/attachments/1010780182476496908/1154474566949806090/image.png?width=1122&height=998)
+Final Score: 5/5 (All Correct) - [Vivian](https://github.com/vivianknee/FastPages/issues/50)
