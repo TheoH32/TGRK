@@ -368,3 +368,25 @@ public class OneTest
 }
 
 ```
+
+```Java
+OneTest test = new OneTest();
+test.testFindFreeBlockAgainstExamples();
+test.testMakeAppointmentAgainstExamples();
+```
+
+    true
+    true
+    true
+    true
+    true
+    true
+    true
+    true
+    true
+
+
+### Diagram Map and Scoring
+![Diagram](frq1.png)
+![Scoring](image.png)
+Final Score: 5/5 (All Correct) - Vivian
