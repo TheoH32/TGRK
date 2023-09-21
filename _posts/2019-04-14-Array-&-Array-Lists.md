@@ -33,6 +33,10 @@ public class MemberInfo{ // filling in the code that College Board did not provi
     public boolean inGoodStanding(){
         return hasGoodStanding;
     }
+    
+    public String getName() {
+        return name;
+    }
 }
 ```
 
@@ -46,13 +50,16 @@ This question wants me to create a method that allows the club to add members to
 ```Java
 public class ClubMembers{
     private ArrayList<MemberInfo> memberList;
+    public ArrayList<MemberInfo> getMemberList() {
+        return memberList;
+    }
     public ClubMembers(){
         memberList = new ArrayList<>(); // making the empty memberList
     }
     public void addMember (String[] names, int gradYear){
         for (int i = 0; i < names.length; i++){
             MemberInfo mem = new MemberInfo(names[i], gradYear, true); // iterating through each person and adding them as good standing
-            MemberList.add(mem);
+            memberList.add(mem);
         }
     }
     public ArrayList<MemberInfo> removeMembers(int year){
@@ -70,6 +77,53 @@ public class ClubMembers{
     }
 }
 ```
+```Java
+public class ClubMembersTest {
+    public static void main(String[] args) {
+        ClubMembers myclub = new ClubMembers();
+        String[] names = {"Tim", "Jim", "Bim"};
+        myclub.addMember(names, 1999);
+        System.out.println("inital adders");
+        for (MemberInfo member : myclub.getMemberList()) {
+            System.out.println(member.getName() + " - Grad Year: " + member.getGradYear());
+        }
+        String[] newnames = {"Joe","Toe"};
+        myclub.addMember(newnames, 2000);
+        System.out.println("new adders");
+        for (MemberInfo member : myclub.getMemberList()) {
+            System.out.println(member.getName() + " - Grad Year: " + member.getGradYear());
+        }
+        ArrayList<MemberInfo> removeMembers = myclub.removeMembers(1999);
+        System.out.println("remove 1999");
+        for (MemberInfo member : removeMembers) {
+            System.out.println(member.getName() + " - Grad Year: " + member.getGradYear());
+        }
+        System.out.println("remaining");
+        for (MemberInfo member : myclub.getMemberList()) {
+            System.out.println(member.getName() + " - Grad Year: " + member.getGradYear());
+        }
+    }
+}
+ClubMembersTest.main(null);
+```
+
+    inital adders
+    Tim - Grad Year: 1999
+    Jim - Grad Year: 1999
+    Bim - Grad Year: 1999
+    new adders
+    Tim - Grad Year: 1999
+    Jim - Grad Year: 1999
+    Bim - Grad Year: 1999
+    Joe - Grad Year: 2000
+    Toe - Grad Year: 2000
+    remove 1999
+    Bim - Grad Year: 1999
+    Jim - Grad Year: 1999
+    Tim - Grad Year: 1999
+    remaining
+    Joe - Grad Year: 2000
+    Toe - Grad Year: 2000
 
 ### Part A Explanation
 In this code block, I had it iterate through each name and add the name and graduation year that is provided and add the default good standing to each person and add it to the memberlist.
@@ -84,6 +138,22 @@ This question wants me to be able to remove members by their graduation year. It
 
 ### Part B Explanation
 This one, I had to record the members that had good standing but were getting removed. Also I would remove the members with grad year that is the provided year or lower. Only the good standing are recorded, otherwise it is only deleted.
+
+## Grading
+
+| Requirement | Points Gained | Reasoning |
+|:---:|---|:---:|
+|A|||
+| Accesses all elements of names (no bounds errors) | 1/1 | line 8: MemberInfo mem = new MemberInfo(names[i], gradYear, true);|
+| Instantiates a MemberInfo object with name from array, provided year, and good standing | 1/1 | MemberInfo mem = new MemberInfo(names[i], gradYear, true); |
+| Adds MemberInfo objects to memberList (in the context of a loop) | 1/1 | MemberList.add(mem); |
+|B|||
+| Declares and initializes an ArrayList of MemberInfo objects | 1/1 |ArrayList<MemberInfo> remove = new ArrayList<>();|
+| Accesses all elements of memberList for potential removal (no bounds errors) | 1/1 |for (int i = memberList.size()-1; i>=0;i--){<br>MemberInfo member = memberList.get(i);|
+| Calls getGradYear or inGoodStanding | 1/1 |if (member.getGradYear() <= year){<br>if(member.inGoodStanding()){|
+| Distinguishes any three cases based on graduation status and standing | 1/1 |Yes|
+| Indentifies graduating members | 1/1 |Yes|
+| Removes appropriate members from memberList and adds appropriate members to the ArrayList to be returned | 1/1 |remove.add(member);|
 
 
 <style>
