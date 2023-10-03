@@ -6,7 +6,7 @@ description: "This is the fist collegeboard FRQ in our presentation"
 featured: true
 image: "assets/images/featured-post/methods.jpg"
 categories: 
-  - "Rachit"
+  - "Grace"
 ---
 
 ## FRQ #1 - Methods and Control Structures
