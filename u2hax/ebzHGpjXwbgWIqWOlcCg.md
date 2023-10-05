@@ -25,6 +25,6 @@ featured: false
 </style>
 
 <!-- The download link styled as a button -->
-<a href="/TGRK/notebooks/theo/" download class="download-button">
+<a href="/TGRK/notebooks/theo/Unit_2_Theo_Student.ipynb" download class="download-button">
     Download Notebook
 </a>
